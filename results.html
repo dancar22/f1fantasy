@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Fantasy Predictor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    
+    <div class='menu-container'>
+        <div id=title>Formula 1 FP Predictor for GridRival</div>
+        <div class='menu'>
+            <a class='home' href="index.html">Home</a>
+            <div class="links">
+                <a class='about' href="about.html">About</a>
+                <a class='git' href="https://github.com/dancar22/f1fantasy" target="_blank" rel="noopener noreferrer">Github</a>
+            </div>
+        </div>
+    </div>
+    <p>Driver/Team: <script>
+        const dt = document.createElement("div");
+        dt.textContent = localStorage.getItem('driver-team');
+        document.body.appendChild(dt);
+    </script>
+    </p>
+    <p>Driver: <script>
+        const driver = document.createElement("div");
+        driver.textContent = localStorage.getItem('driver');
+        document.body.appendChild(driver);
+    </script>
+    </p>
+    <p>Track: <script>
+        const track = document.createElement("div");
+        track.textContent = localStorage.getItem('track');
+        document.body.appendChild(track);
+    </script>
+    </p>
+
+    
+</body>
+</html>

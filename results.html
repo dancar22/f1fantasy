@@ -31,12 +31,19 @@
         document.body.appendChild(driver);
     </script>
     </p>
+    <p>Team: <script>
+        const team = document.createElement("div");
+        team.textContent = localStorage.getItem('team');
+        document.body.appendChild(team);
+    </script>
+    </p>
     <p>Track: <script>
         const track = document.createElement("div");
         track.textContent = localStorage.getItem('track');
         document.body.appendChild(track);
     </script>
     </p>
+    
 
     
 </body>

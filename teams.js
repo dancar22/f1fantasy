@@ -1,7 +1,7 @@
 const buttons = document.querySelectorAll("a.driver");
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
-    localStorage.setItem('driver', button.id);
-    localStorage.setItem('team', 'None');
+    localStorage.setItem('team', button.id);
+    localStorage.setItem('driver', 'None');
   });
 });

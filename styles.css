@@ -95,6 +95,7 @@ img {
     max-width: 20%;
 }
 
+
 .driver:hover {
     background-color: red;
 }
@@ -123,6 +124,10 @@ img {
 
 .tracks:hover {
     background-color: #cf1515;
+}
+
+.container {
+    justify-content: space-around;
 }
 
 

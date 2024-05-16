@@ -32,12 +32,12 @@ class DriverClassificationModel(Module):
     def __init__(self):
         # Initialize your model parameters here
         super().__init__()
-        input_size = 45
+        input_size = 56
         output_size = 1
         "*** YOUR CODE HERE ***"
-        self.batch_size = 2
+        self.batch_size = 5
         self.lr = 0.01
-        self.hidden = 100
+        self.hidden = 300
         
         self.m1 = Linear(input_size, self.hidden)
         self.m2 = Linear(self.hidden, self.hidden)
@@ -61,6 +61,9 @@ class DriverClassificationModel(Module):
                 (also called logits)
         """
         """ YOUR CODE HERE """
+        # print("x: ", x)
+        # print("guess: ", self.m3(relu(self.m2(relu(self.m1(x))))))
+        # print("\n")
         return self.m3(relu(self.m2(relu(self.m1(x)))))
 
 
@@ -78,10 +81,10 @@ class DriverClassificationModel(Module):
         Returns: a loss tensor
         """
         """ YOUR CODE HERE """
-        print("true value: ", y)
-        print("guess: ", self.run(x))
-        print("\n")
-        return mse_loss(self.run(x), y)
+        ystar = self.run(x)
+        # print("true value: ", y)
+        # print("guess", ystar)
+        return mse_loss(ystar, y)
 
         
 
@@ -93,8 +96,7 @@ class DriverClassificationModel(Module):
         dataloader = DataLoader(dataset, batch_size=self.batch_size, shuffle=True)
         optimizer = optim.Adam(self.parameters(), lr=self.lr)
 
-        
-        for epoch in range(1000):
+        for epoch in range(2000):
             for data in dataloader:
                 optimizer.zero_grad()
                 loss = self.get_loss(data['x'], data['label'])   

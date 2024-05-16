@@ -11,11 +11,12 @@ from torch import nn
 import torch
 from torch.utils.data import Dataset, DataLoader
 
-def format(driver, track, sprint):
-    vec = [0] * 45
+def format(driver, track, sprint, year):
+    vec = [0] * 56
     vec[driver] = 1
-    vec[20+track] = 1
-    vec[44] = sprint
+    vec[30+track] = 1
+    vec[54] = sprint
+    vec[55] = year
     return vec
 
 class Custom_Dataset(Dataset):
@@ -82,7 +83,17 @@ class DriverDataset(Custom_Dataset):
             "alb": 16, 
             "sar": 17, 
             "bot": 18, 
-            "zho": 19 
+            "zho": 19, 
+            "red": 20, 
+            "fer": 21, 
+            "mcl": 22, 
+            "mer": 23,
+            "ast": 24, 
+            "rac": 25, 
+            "haa": 26, 
+            "alp": 27, 
+            "wil": 28, 
+            "kic": 29
         }
         
         tracks = {
@@ -101,13 +112,13 @@ class DriverDataset(Custom_Dataset):
             "hun": 12, 
             "spa": 13, 
             "zan": 14, 
-            "mon": 15, 
+            "mza": 15, 
             "bak": 16, 
             "sin": 17, 
             "cot": 18, 
             "mex": 19, 
             "sao": 20, 
-            "las": 21, 
+            "vgs": 21, 
             "qat": 22, 
             "abu": 23
         }
@@ -116,8 +127,8 @@ class DriverDataset(Custom_Dataset):
             csvreader = csv.reader(csvfile)
             fields = next(csvreader)
             for row in csvreader:
-                x.append(format(drivers[row[1]], tracks[row[2]], int(row[3])))
-                y.append(float(row[4]))
+                x.append(format(drivers[row[1]], tracks[row[2]], int(row[3]), int(row[4])))
+                y.append(float(row[5]))
             
         super().__init__(np.array(x), np.expand_dims(y, axis=1))
 

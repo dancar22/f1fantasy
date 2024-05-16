@@ -75,6 +75,7 @@ img {
     height: auto;
     width: 70%;
     align-self: center;
+    border-radius: 1em;
 }
 
 .trackimg {
@@ -123,3 +124,5 @@ img {
 .tracks:hover {
     background-color: #cf1515;
 }
+
+

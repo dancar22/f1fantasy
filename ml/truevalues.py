@@ -62,10 +62,18 @@ tracks = {
             "abu": 23
 }
 
+for driver in results:
+    for i in range(24):
+        driver.append(0)
+        
+
 with open("ml/data/f1 scores - Sheet1.csv", 'r') as csvfile:
             csvreader = csv.reader(csvfile)
             fields = next(csvreader)
             for row in csvreader:
                 if int(row[4]) == 1:
                     results[drivers[row[1]]][tracks[row[2]]]=int(row[5])
+                else:
+                    results[drivers[row[1]]][tracks[row[2]]+24]=int(row[5])
+                    
 print(results)
